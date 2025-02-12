@@ -3,10 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Adam's Calculator</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    
+    <div id="frame">
+        <div id="displayContainer">
+            <p id="display">Loading...</p>
+        </div>
+        <div id="buttonContainer">
+            <div class="row">
+                <button id="clear" onClick="keyPress('clear')">Clear</button>
+            </div>
+            <div class="row" id="row 1">
+                <button class="keypad" id="7" onClick="keyPress('7')">7</button>
+                <button class="keypad" id="8" onClick="keyPress('8')">8</button>
+                <button class="keypad" id="9" onClick="keyPress('9')">9</button>
+                <button class="keypad" id="/" onClick="keyPress('/')">÷</button>
+            </div>
+            <div class="row" id="row 2">
+                <button class="keypad" id="4" onClick="keyPress('4')">4</button>
+                <button class="keypad" id="5" onClick="keyPress('5')">5</button>
+                <button class="keypad" id="6" onClick="keyPress('6')">6</button>
+                <button class="keypad" id="*" onClick="keyPress('*')">×</button>
+            </div>
+            <div class="row" id="row 3">
+                <button class="keypad" id="1" onClick="keyPress('1')">1</button>
+                <button class="keypad" id="2" onClick="keyPress('2')">2</button>
+                <button class="keypad" id="3" onClick="keyPress('3')">3</button>
+                <button class="keypad" id="-" onClick="keyPress('-')">-</button>
+            </div>
+            <div class="row" id="row 4">
+                <button class="keypad" id="0" onClick="keyPress('0')">0</button>
+                <button class="keypad" id="." onClick="keyPress('.')">.</button>
+                <button class="keypad" id="=" onClick="keyPress('=')">=</button>
+                <button class="keypad" id="+" onClick="keyPress('+')">+</button>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="./calculator.js"></script>
 </html>
