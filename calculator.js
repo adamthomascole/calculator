@@ -27,7 +27,7 @@ const divide = (num1, num2) => {return num1 / num2};
 
 function operate(op, num1, num2) {
     if (display.textContent === "TOO BIG") {
-        return;
+        return displayText;
     }
     opNum1 = Number(num1);
     opNum2 = Number(num2);
@@ -104,11 +104,12 @@ function keyPress(key) {
                 } else if ((displayText.length >= 9) && !displayText.includes('.')) {
                     display.textContent = "TOO BIG"
                 } else {
-                    console.log('ooga booga booga')
+                    display.textContent = displayText;
+                    // console.log('ooga booga booga');
                 };
                 
                 result = operate(operator, opNum1, opNum2).toString()
-                opNum1 = result;
+                opNum1 = Number(result);
                 //console.log('TIME +1')
                 time++;
             }
@@ -132,12 +133,15 @@ function keyPress(key) {
         display.textContent = operation;
         displayText = display.textContent
         
-        if ((displayText.length >= 9) && displayText.includes('.')) {
+        if ((displayText.length >= 11) && displayText.includes('.')) {
             displayText = roundNum(Number(display.textContent));
             display.textContent = displayText.slice(0, 11)
-        } else if ((displayText.length >= 9) && !displayText.includes('.')) {
+        } else if ((displayText.length >= 11) && !displayText.includes('.')) {
             display.textContent = "TOO BIG"
-        }
+        } else {
+            display.textContent = operate(operator, opNum1, opNum2).toString()
+            // console.log('ooga booga booga 2');
+        };
 
         if (time == 1) {
             display.textContent = currentValue;
@@ -176,6 +180,21 @@ function keyPress(key) {
                     clearNext = false;
                 };
         
+                if (displayText.includes('0.')) {
+                    display.textContent = displayText + key;
+                } else if (displayText == '0'){
+                    display.textContent = key;
+                } else {
+                    display.textContent = displayText + key;
+                };
+            };
+        } else if (displayText.length <= 10) {
+            if (displayText.charAt(1) == '+' || displayText.charAt(1) == '-' || displayText.charAt(1) == '×' || displayText.charAt(1) == '÷') {
+                displayText = displayText.slice(1);
+            };
+
+            if (numLast == false) {
+                displayText = '0';
                 if (displayText.includes('0.')) {
                     display.textContent = displayText + key;
                 } else if (displayText == '0'){
