@@ -9,6 +9,16 @@ let clearNext = false;
 let opLast = false;
 let numLast = true;
 
+// Base Functions
+function initializeDisplay() {
+    if (result == null || display.textContent == "Loading...") {
+        display.textContent = '0';
+    } else {
+        display.textContent = result;
+    }
+};
+
+
 // Operations
 const add = (num1, num2) => {return num1 + num2};
 const subtract = (num1, num2) => {return num1 - num2};
@@ -16,6 +26,9 @@ const multiply = (num1, num2) => {return num1 * num2};
 const divide = (num1, num2) => {return num1 / num2};
 
 function operate(op, num1, num2) {
+    if (display.textContent === "TOO BIG") {
+        return;
+    }
     opNum1 = Number(num1);
     opNum2 = Number(num2);
     op = operator;
@@ -52,7 +65,7 @@ function keyPress(key) {
         display.textContent = '0';
         opLast = false;
     } else if (key == '.') {
-        numLast = false;
+        numLast = true;
 
         if (displayText.includes(".")) {
             display.textContent = displayText;
@@ -65,6 +78,7 @@ function keyPress(key) {
 
         if (opLast == true) {
             displayText = display.textContent;
+            operator = key;
         } else {
             opLast = true;
             operator = key;
@@ -82,10 +96,15 @@ function keyPress(key) {
                 displayText = display.textContent
             
                 if ((displayText.length >= 9) && displayText.includes('.')) {
+                    if (isNaN(roundNum(Number(display.textContent)))) {
+                        return;
+                    };
                     displayText = roundNum(Number(display.textContent));
                     display.textContent = displayText.slice(0, 11)
                 } else if ((displayText.length >= 9) && !displayText.includes('.')) {
                     display.textContent = "TOO BIG"
+                } else {
+                    console.log('ooga booga booga')
                 };
                 
                 result = operate(operator, opNum1, opNum2).toString()
@@ -93,7 +112,7 @@ function keyPress(key) {
                 //console.log('TIME +1')
                 time++;
             }
-        }; 
+        };
     } else if (key == '=') {
         opLast = false;
         numLast = false;
@@ -127,6 +146,7 @@ function keyPress(key) {
         time = 1;
         opNum1 = operation;
         opNum2 = "";
+        result = display.textContent
     } else {
         opLast = false;
         if (displayText.length <= 9) {
@@ -178,7 +198,8 @@ document.addEventListener("keydown", (event) => {
     } else if (["+", "-", "*", "/"].includes(key)) {
         keyPress(key);
     } else if (key == "Enter") {
-        keyPress("=");
+        keyPress('=')
+        initializeDisplay();
     } else if (key == "Backspace") {
         display.textContent = display.textContent.slice(0, -1) || "0";
     } else if (key == "Escape") {
@@ -186,4 +207,5 @@ document.addEventListener("keydown", (event) => {
     };
 });
 
-display.textContent = "0";
+// Initialization
+initializeDisplay()
