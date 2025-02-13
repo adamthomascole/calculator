@@ -13,7 +13,7 @@ body {
 
 #display {
     display: flex;
-    border: 2px outset black;
+    border: max(0.5vw, 3px) outset black;
     background-color: white;
     border-radius: max(1vw, 2px);
     justify-content: flex-end;
@@ -43,6 +43,7 @@ body {
     margin: 2px;
     border-radius: max(1vw, 4px);
     font-size: max(3vw, 12px);
+    border: max(0.5vw, 3px) outset black;
 }
 
 .keypad {
@@ -53,4 +54,5 @@ body {
     min-height: 25px;
     border-radius: max(1vw, 4px);
     font-size: max(3vw, 12px);
+    border: max(0.5vw, 3px) outset black;
 }

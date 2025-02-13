@@ -173,17 +173,17 @@ function keyPress(key) {
 document.addEventListener("keydown", (event) => {
     const key = event.key;
 
-    if (!isNaN(key) || key === ".") {
+    if (!isNaN(key) || key == ".") {
         keyPress(key);
     } else if (["+", "-", "*", "/"].includes(key)) {
         keyPress(key);
-    } else if (key === "Enter") {
+    } else if (key == "Enter") {
         keyPress("=");
-    } else if (key === "Backspace") {
+    } else if (key == "Backspace") {
         display.textContent = display.textContent.slice(0, -1) || "0";
-    } else if (key === "Escape") {
+    } else if (key == "Escape") {
         keyPress("clear");
-    }
+    };
 });
 
 display.textContent = "0";
