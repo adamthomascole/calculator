@@ -6,9 +6,10 @@ body {
 }
 
 #frame {
-    background-color: rgb(150, 150, 150);
+    background: linear-gradient(180deg, #d1d1d1, #a8a8a8);
     border-radius: max(1vw, 4px);
     padding: 0.5vh;
+    box-shadow: 2px 2px 4px;
 }
 
 #display {
@@ -25,6 +26,9 @@ body {
     padding-right: 6px;
     margin: 2px;
     font-size: max(4vw, 16px);
+    box-shadow: 2px 2px 4px;
+    font-weight: 600;
+    cursor: not-allowed;
 }
 
 .row {
@@ -44,6 +48,17 @@ body {
     border-radius: max(1vw, 4px);
     font-size: max(3vw, 12px);
     border: max(0.5vw, 3px) outset black;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#clear:hover {
+    background-color: rgb(255, 255, 255);
+}
+
+#clear:active {
+    background-color: rgb(234, 234, 234);
+    box-shadow: 1px 1px 3px;
 }
 
 .keypad {
@@ -55,4 +70,15 @@ body {
     border-radius: max(1vw, 4px);
     font-size: max(3vw, 12px);
     border: max(0.5vw, 3px) outset black;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.keypad:hover {
+    background-color: rgb(255, 255, 255);
+}
+
+.keypad:active {
+    background-color: rgb(234, 234, 234);
+    box-shadow: 1px 1px 3px;
 }
